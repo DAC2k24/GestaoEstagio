@@ -5,6 +5,7 @@
     checklogin();
 ?>
     <h1>Benvindo de volta!</h1>
+    <h2>Git</h2>
 <?php
     include 'templates/footer.php';
 ?>
