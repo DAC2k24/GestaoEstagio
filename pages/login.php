@@ -1,7 +1,7 @@
 <?php
 session_start();
     if (isset($_GET['session_expired']) && $_GET['session_expired'] == 1) {
-        echo ("<script> alert('Sua sessão expirou. Por favor, faça login novamente.');</script> ");            
+        echo ("<script> alert('Sua sessão expirou. Por favor, faça login novamente.');</script> ");
     }
 ?>
 <link rel="stylesheet" href="../css/style.css">

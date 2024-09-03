@@ -5,8 +5,6 @@
     checklogin();
 
     $sqlCursos = $conn->query("SELECT * FROM cursos");
-    
-
     if ($conn->connect_error) {
         die("Falha na conexão: " . $conn->connect_error);
     }
@@ -17,9 +15,8 @@
         die("Erro na consulta SQL: " . $conn->error);
     }
 ?>
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="/gestaoestagio/css/style.css">
 
-<!-- Modal para adicionar nova turma -->
 <div id="addTurmaModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
@@ -37,7 +34,6 @@
                         while($row = $sqlCursos->fetch_assoc()){
                             echo "<option value='".$row['nome']."'>".$row['nome']."</option>";
                         };
-                        
                     }else{
                         echo "<option value=''>Nenhum curso disponível</option>";
                     }
@@ -54,7 +50,6 @@
                 <option value="13ªClasse">13ªClasse</option>
             </select>
             
-            
             <label for="nSala">Número da Sala:</label>
             <input type="number" id="nSala" name="nSala" required>
             
@@ -65,14 +60,12 @@
             <input type="number" id="numeroMaxAlunos" name="numeroMaxAlunos" required>
             
             <label for="periodo">Período:</label>
-                <div>
-                    <input type="radio" id="manha" name="periodo" value="manha" required>
-                    <label for="matutino">Manhã</label>
-                </div>
-                <div>
-                    <input type="radio" id="tarde" name="periodo" value="tarde" required>
-                    <label for="vespertino">Tarde</label>
-                </div>
+            <label for="manha">Manhã</label>
+            <input type="radio" id="manha" name="periodo" value="manha" required>
+                    
+            <label for="tarde">Tarde</label>
+            <input type="radio" id="tarde" name="periodo" value="tarde" required></div>
+
             <label for="descricao">Descrição:</label>
             <input type="text" id="descricao" name="descricao" required>
             
@@ -80,13 +73,9 @@
         </form>
     </div>
 </div>
-
-
 <div class="container">
-    <h1>Turmas</h1>
-
+    
     <div class="content-wrapper">
-        <!-- Barra lateral -->
         <aside class="sidebar">
             <h2 class="classes">Classes</h2>
             <ul>
@@ -95,13 +84,11 @@
                 <li><a href="#" onclick="filterClasses('13ªClasse')">13ª Classe</a></li>
             </ul>
         </aside>
-
-        <!-- Conteúdo principal -->
         <main class="main-content">
+            <h1>Turmas</h1>
             <table class="turmas-table">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Curso</th>
                         <th>Classe</th>
                         <th>Turma</th>
@@ -115,8 +102,9 @@
                     <?php
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
+                            
                             echo "<tr class='turma-row' data-classe='" . $row['classe'] . "'>";
-                            echo "<td>" . $row['id'] . "</td>";
+                            // echo "<td>" . $row['id'] . "</td>";
                             echo "<td>" . $row['curso'] . "</td>";
                             echo "<td>" . $row['classe'] . "</td>";
                             echo "<td>" . $row['turma'] . "</td>";
@@ -135,14 +123,13 @@
         </main>
     </div>
 </div>
-
-<script>
-    
+<script>    
     var modal = document.getElementById("addTurmaModal");
     var btn = document.getElementById("addNewTurmaBtn");
     var span = document.getElementsByClassName("close")[0];
 
     btn.onclick = function() {
+        console.log("Botão clicado");
         modal.style.display = "block";
     }
     span.onclick = function() {
@@ -153,8 +140,6 @@
             modal.style.display = "none";
         }
     }
-    
-
     function filterClasses(classe) {
         var rows = document.querySelectorAll('.turma-row');
         rows.forEach(row => {
@@ -167,7 +152,6 @@
     }
 
 </script>
-
 <?php
 include '../templates/footer.php';
 ?>

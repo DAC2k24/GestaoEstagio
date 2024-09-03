@@ -1,6 +1,6 @@
 <?php
 session_start();
-$max_inative_time = 600;
+$max_inative_time = 6000;
 
 if(isset($_SESSION['last_activity'])){
     $inative_time = time() - $_SESSION['last_activity'];

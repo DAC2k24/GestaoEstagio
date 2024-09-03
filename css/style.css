@@ -1,21 +1,28 @@
 :root {
-    --primary-color: #007bff;
-    --primary-color-hover: #0056b3;
-    --background-color: #f4f4f4;
-    --header-bg-color: #0056b3;
-    --header-text-color: #fff;
-    --dropdown-bg-color: #fff;
-    --dropdown-text-color: #333;
+    --primary-color: #4a7c59; /* Um tom verde suave, associado à saúde */
+    --primary-color-hover: #3a5f46; /* Um tom mais escuro para o hover */
+    --secondary-color: #9dbbae; /* Um tom complementar mais claro de verde */
+    --background-color: #f7f7f7; /* Fundo neutro, mais claro */
+    --header-bg-color: #2c3e50; /* Um azul escuro, elegante */
+    --header-text-color: #ffffff; /* Texto branco para contraste */
+    --dropdown-bg-color: #2c3e50;
+    --dropdown-text-color: #3a5f46;
+    --button-color: #4a7c59;
+    --button-hover-color: #3a5f46;
+    --table-header-bg: #e8f0eb; /* Fundo claro para cabeçalhos de tabela */
+    --table-row-hover-bg: #f0f9f6;
 }
 body{
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    overflow-x: hidden;
 }
 
 .login-container {
     width: 300px;
-    margin: 100px auto -18% auto;
+    margin: 100px auto 0 auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -25,12 +32,13 @@ body{
 .login-container h2 {
     margin-bottom: 20px;
     text-align: center;
-    color: #222;
+    color: var(--header-bg-color);
 }
 
 .login-container label {
     display: block;
     margin-bottom: 5px;
+    color: var(--primary-color);
 }
 
 .login-container input {
@@ -44,7 +52,7 @@ body{
 .login-container button {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: var(--button-color);
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -52,25 +60,27 @@ body{
 }
 
 .login-container button:hover {
-    background-color: #0056b3;
+    background-color: var(--button-hover-color);
 }
+
 
 .main-header {
     background-color: var(--header-bg-color);
     color: var(--header-text-color);
-    padding: 0 20px 0 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    height: 60px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 .logo{
-    width: 60px;
+    width: 50px;
     height: auto;
     margin-right: 10px;
 }
@@ -87,18 +97,17 @@ body{
 .text-logo a span{
     font-size: 1.3rem;
     font-weight: bold;
+    color: var(--background-color);
 }
 .main-nav ul {
     list-style: none;
+    display: flex;
     margin: 0;
     padding: 0;
-    display: flex;
 }
 
 .main-nav ul li {
-    position: relative;
-    margin-left: 20px;
-    margin-left: 2px;
+    margin: 0 10px;
 }
 
 .main-nav ul li a {
@@ -106,19 +115,20 @@ body{
     text-decoration: none;
     font-size: 16px;
     padding: 10px 15px;
-    display: block;
-    transition: background-color 0.3s, color 0.3s;
 }
-
+.main-nav ul li a.active {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 4px;
+}
 .main-nav ul li a:hover {
     background-color: var(--primary-color);
     color: #fff;
     border-radius: 4px;
 }
 #logout{
-    color: red;
+    color: #b71c1c;
 }
-
 
 .dropdown .dropbtn {
     cursor: pointer;
@@ -158,11 +168,12 @@ body{
 
 
 .main-footer {
-    background-color: #333;
+    background-color: var(--header-bg-color);
     color: #fff;
-    margin-top: 30%;
-    padding: 20px 0;
+    margin-top: 40%;
+    padding: 5px 0;
     font-size: 14px;
+    height: 200px;
 }
 
 .footer-container {
@@ -182,7 +193,7 @@ body{
 .footer-section h2 {
     font-size: 18px;
     margin-bottom: 10px;
-    color: var(--header-bg-color);
+    color: var(--primary-color);
 }
 
 .footer-section ul {
@@ -215,7 +226,7 @@ body{
 }
 
 .footer-bottom {
-    background-color: #222;
+    background-color: var(--primary-color);
     color: #ccc;
     text-align: center;
     padding: 20px 0;
@@ -238,20 +249,119 @@ body{
 
 /* TURMA.PHP */
 
-.modal {
-    /* display: none;  */
-    position: fixed; 
+/* INICIO */
+/* MODAL */
+
+#addTurmaForm {
+    display: grid;
+    grid-template-columns: 15rem 20rem;
+    gap: 10px;
+}
+
+#addTurmaForm label {
+    font-weight: bold;
+    /* margin-bottom: 5px; */
+    color: #2c3e50;
+}
+
+#addTurmaForm input[type="text"],
+#addTurmaForm input[type="number"],
+#addTurmaForm select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+#addTurmaForm input[type="radio"] {
+    margin-right: 10px;
+}
+
+#addTurmaForm .btn-add {
+    grid-column: 1 / -1;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#addTurmaForm .btn-add:hover {
+    background-color: var(--primary-color-hover);
+}
+
+@media (max-width: 768px) {
+    #addTurmaForm {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+}
+
+/* .formCreate{ */
+    /* max-width: 600px; */
+    /* height: 70%; */
+    /* margin: 0 auto; */
+    /* padding: 18px; */
+    /* border: 1px solid #ccc; */
+    /* border-radius: 5px; */
+/* } */
+/* .formCreate label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: lighter;
+}
+input[type="text"],
+input[type="number"],
+select {
+    width: 90%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px   
+ 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0069d9;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+
+} */
+
+/* .modal { */
+    /* display: none; */
+    /* position: fixed; 
     z-index: 1; 
     left: 0;
     top: 0;
     width: 100%; 
     height: 100%; 
-    overflow: auto; 
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4); 
+    overflow: auto;
     padding-top: 60px; 
-}
-.modal-content {
+} */
+/* .modal-content {
     background-color: #fefefe;
     margin: 5% auto;
     padding: 20px;
@@ -288,13 +398,18 @@ body{
 }
 .modal-content form button:hover {
     background-color: #0056b3;
-}
+} */
+/* FIM */
+/* MODAL */
+
 
 
 .container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    margin-bottom: -40%
 }
 h1{
     text-align: center;
@@ -304,6 +419,26 @@ h1{
 h2 {
     text-align: center;
     margin-bottom: 20px;
+}
+
+.turma-header {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.turma-header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.turma-header p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #666;
 }
 
 .turmas-table {
@@ -322,11 +457,14 @@ h2 {
     background-color: #f2f2f2;
     font-weight: bold;
 }
+.turma-row {
+    cursor: pointer;
+}
 
 .btn-add {
     display: inline-block;
     padding: 10px 15px;
-    background-color: #007bff;
+    /* background-color: #007bff; */
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -336,18 +474,23 @@ h2 {
     background-color: #0056b3;
 }
 
-
 .content-wrapper {
     display: flex;
+    min-height: 100vh;
 }
 
 .sidebar {
-    width: 200px;
-    margin-right: 20px;
+    width: 220px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .main-content {
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.3);
     flex: 1;
+    padding: 20px;
+    background-color: #fafafa;
 }
 
 .turmas-table {
@@ -376,17 +519,24 @@ h2 {
     padding: 0;
 }
 .sidebar ul li{
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 .sidebar ul li a{
     color: #333;
     text-decoration: none;
     display: block;
     padding:10px;
-    background-color: #f4f4f4;
+    background-color: var(--secondary-color);
     border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
 }
 .sidebar ul li a:hover{
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-hover);
     color:#fff
+}
+.sidebar .divider{
+    height: 1px;
+    background-color: red;
+    margin: 20px 0;
+    opacity: 0.3;
 }
